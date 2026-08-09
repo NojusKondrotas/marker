@@ -6,9 +6,6 @@
 	import NotePreviewColorIdBar from "@/components/app/note-preview/NotePreviewColorIdBar.svelte";
 
     const props = $props();
-
-    const items = $derived(props.titles?.map((titleData) => ({ id: titleData.id, label: titleData.title })) ?? []);
-
 </script>
 
 
@@ -19,10 +16,10 @@
     </aside>
     <Card class="note-preview w-[400px]">
         <CardHeader>
-            <NotePreviewColorIdBar colors={[{hex: "#403D88"}, {hex: "#ff00ff"}]} style={props.style} />
+            <NotePreviewColorIdBar colors={props.colors} style={props.style} />
         </CardHeader>
         <CardContent>
-            <p class="text-2xl">{props.content}</p>
+            <p class="text-2xl line-clamp-3 text-ellipsis">{props.content}</p>
         </CardContent>
     </Card>
     <aside class="ml-1.5 w-max flex flex-col gap-y-2">
