@@ -34,7 +34,7 @@
 </script>
 
 
-<menu id={props.id} bind:this={titleMenu} class:invisible={getMenu(MenuLayers.NoteTitleMenu) !== props.id} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 backdrop-filter-[blur(2px)] overflow-x-hidden border shadow-sm">
+<menu id={props.id} bind:this={titleMenu} class:invisible={getMenu(MenuLayers.NoteMenu) !== props.id} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 backdrop-filter-[blur(2px)] overflow-x-hidden border shadow-sm">
     {#each props.titles as title (title.offset)}
         <li>
             <NotePreviewTitleAgent {...title}></NotePreviewTitleAgent>

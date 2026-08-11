@@ -4,6 +4,7 @@
     import Network from '@lucide/svelte/icons/network';
     import Play from '@lucide/svelte/icons/play';
     import Search from '@lucide/svelte/icons/search';
+    import TextCursor from '@lucide/svelte/icons/text-cursor';
     import Trash2 from '@lucide/svelte/icons/trash-2';
     import Type from '@lucide/svelte/icons/type';
 
@@ -12,6 +13,7 @@
     const icons = {
         play: Play,
         type: Type,
+        textCursor: TextCursor,
         search: Search,
         network: Network,
         copy: Copy,
