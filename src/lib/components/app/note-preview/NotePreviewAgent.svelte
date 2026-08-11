@@ -21,7 +21,7 @@
     const Icon = icons[props.type];
 </script>
 
-<Button class="shadow-sm w-2 h-2 box-content p-1.5 cursor-pointer" variant="outline" size="icon-xs" >
+<Button id={props.id ?? undefined} onclick={props.onclick ?? undefined} class="shadow-sm w-2 h-2 box-content p-1.5 cursor-pointer" variant="outline" size="icon-xs" >
     {#if Icon}
         <Icon strokeWidth={1.5} />
     {/if}
