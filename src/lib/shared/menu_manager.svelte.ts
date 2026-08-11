@@ -1,7 +1,7 @@
 import { SvelteMap } from "svelte/reactivity";
 
 export enum MenuLayers {
-    NoteTitleMenu,
+    NoteMenu,
 }
 
 const openMenus: SvelteMap<MenuLayers, string> = new SvelteMap();
