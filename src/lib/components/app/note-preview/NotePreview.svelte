@@ -57,7 +57,7 @@
         </CardContent>
     </Card>
     <aside class="ml-1.5 w-max flex flex-col gap-y-2">
-        <NotePreviewAgent type="play" />
+        <a href="/note/{props.id}/0" class="contents"><NotePreviewAgent type="play" /></a>
         <NotePreviewAgent id="{props.id}-agent-title" onclick={onClickTitleMenu} type="type" />
         <NotePreviewAgent id="{props.id}-agent-highlight" onclick={onClickHighlightMenu} type="textCursor" />
         <NotePreviewAgent type="search" />

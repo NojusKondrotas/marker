@@ -14,7 +14,7 @@
 	--popover: oklch(1 0 0);
 	--popover-foreground: oklch(0.145 0 0);
 	--primary: oklch(0.205 0 0);
-	--primary-foreground: oklch(0.985 0 0);
+	--primary-foreground: oklch(55.742% 0.12697 22.019);
 	--secondary: oklch(0.97 0 0);
 	--secondary-foreground: oklch(0.205 0 0);
 	--muted: oklch(0.97 0 0);
@@ -127,5 +127,18 @@
 	}
 	html {
 		@apply font-sans;
+	}
+}
+
+@layer utilities {
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+
+	.scrollbar-hidden {
+		scrollbar-width: none;
+		scrollbar-color: transparent transparent;
+
+		-ms-overflow-style: none;
 	}
 }
