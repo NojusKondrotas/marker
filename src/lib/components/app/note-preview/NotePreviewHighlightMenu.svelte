@@ -28,7 +28,7 @@
                 }
             }
 
-            highlightAgents[currentHighlightAgent].scrollIntoView({ behavior: 'smooth' });
+            highlightMenu.scrollTo({ left: highlightAgents[currentHighlightAgent].offsetLeft, behavior: 'smooth' });
         });
     });
 </script>

@@ -28,7 +28,7 @@
                 }
             }
 
-            titleAgents[currentTitleAgent].scrollIntoView({ behavior: 'smooth' });
+            titleMenu.scrollTo({ left: titleAgents[currentTitleAgent].offsetLeft, behavior: 'smooth' });
         });
     });
 </script>
