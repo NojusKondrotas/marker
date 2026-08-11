@@ -15,7 +15,7 @@
     {#if props.style == 1}
         {#each colors as color (color.hex)}
             <div class="flex flex-col justify-between h-full">
-                <Button style="background-color: {color.toString()};" class="w-full h-4 [--radius:8px] rounded-lg cursor-pointer" variant="outline"></Button>
+                <Button style="background-color: {color.toString()};" class="w-full h-4 rounded-lg cursor-pointer" variant="outline"></Button>
                 <Item class="p-0">
                     <ItemContent>
                         <ItemDescription class="text-[0.65rem]">
@@ -25,7 +25,7 @@
                 </Item>
             </div>
         {/each}
-        <Button class="w-fit h-4 [--radius:8px] rounded-lg p-1.5 cursor-pointer" variant="outline" size="icon" ><Plus strokeWidth={1.5}/></Button>
+        <Button class="w-fit h-4 rounded-lg p-1.5 cursor-pointer" variant="outline" size="icon" ><Plus strokeWidth={1.5}/></Button>
     {:else if props.style == 2}
         {#each colors as color (color.hex)}
         <div class="flex justify-between h-full gap-x-0.5" >
