@@ -33,9 +33,9 @@
             <Item class="p-0 hover:border-b hover:border-b-border">
                 <ItemContent class="flex flex-row items-center gap-x-0">
                     <ItemDescription class="text-[0.65rem] w-fit">
-                        {color.toString()}
+                        #
                     </ItemDescription>
-                    <Input style="font-size: 0.65rem; color: oklch(0.556 0 0)" class="relative p-0 h-fit w-[7ch] border-0" value={color.hex.slice(1)} />
+                    <Input style="font-size: 0.65rem; color: oklch(0.556 0 0)" class="relative p-0 h-fit w-[7ch] border-0" value={color.toString().slice(1)} />
                 </ItemContent>
             </Item>
         </div>
