@@ -129,16 +129,3 @@
 		@apply font-sans;
 	}
 }
-
-@layer utilities {
-	.scrollbar-hidden::-webkit-scrollbar {
-		display: none;
-	}
-
-	.scrollbar-hidden {
-		scrollbar-width: none;
-		scrollbar-color: transparent transparent;
-
-		-ms-overflow-style: none;
-	}
-}
