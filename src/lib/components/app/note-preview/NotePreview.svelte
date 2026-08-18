@@ -4,10 +4,10 @@
 	import NotePreviewAgent from "@/components/app/note-preview/NotePreviewAgent.svelte";
 	import CardHeader from "@/components/ui/card/card-header.svelte";
 	import NotePreviewColorIdBar from "@/components/app/note-preview/NotePreviewColorIdBar.svelte";
-	import NotePreviewTitleMenu from "./NotePreviewTitleMenu.svelte";
 	import { onMount } from "svelte";
 	import { MenuLayers, registerMenu, unregisterMenu } from "@/shared/menu_manager.svelte";
-	import NotePreviewHighlightMenu from "./NotePreviewHighlightMenu.svelte";
+	import NotePreviewTitleMenu from "./menus/titles/NotePreviewTitleMenu.svelte";
+	import NotePreviewHighlightMenu from "./menus/highlights/NotePreviewHighlightMenu.svelte";
 
     const props = $props();
 
