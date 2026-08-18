@@ -45,6 +45,7 @@
 
 <div class="flex">
     <aside class="mr-1.5 w-max flex flex-col gap-y-2">
+        <NotePreviewAgent type="squareOff" />
         <NotePreviewAgent type="copy" />
         <NotePreviewAgent type="trash" />
     </aside>
