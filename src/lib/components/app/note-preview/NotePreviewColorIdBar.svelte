@@ -68,6 +68,5 @@
             </Item>
         </div>
         {/each}
-        <Button class="w-4 h-4 p-1.5 cursor-pointer" variant="outline" size="icon" ><Plus strokeWidth={1.5}/></Button>
     {/if}
 </section>
