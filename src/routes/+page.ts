@@ -1,5 +1,6 @@
 import ColorHex from "@/models/ColorHex";
 import Note from "@/models/Note";
+import NoteColorId from "@/models/NoteColorId";
 import NoteHighlight from "@/models/NoteHighlight";
 import NoteTitle from "@/models/NoteTitle";
 import NotesStore from "@/stores/NotesStore";
@@ -7,12 +8,12 @@ import NotesStore from "@/stores/NotesStore";
 export async function load() {
     const notes = [];
     notes.push(new Note(1,
-        [new ColorHex("403D88"), new ColorHex("ff00ff")],
+        [new NoteColorId(1, new ColorHex("403D88")), new NoteColorId(2, new ColorHex("ff00ff"))],
         [new NoteTitle(0, "Oscar"), new NoteTitle(256, "RomeoSierra TangoUniformVictor"), new NoteTitle(512, "Mike")],
         [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia"), new NoteHighlight(800, "CharlieAlphaLima"), new NoteHighlight(1145, "DeltaIndia"), new NoteHighlight(1307, "SierraOscarRomeo"), new NoteHighlight(2041, "DeltaEchoRomeo")],
         "India Lima Uniform Victor Yankee Oscar Uniform"));
     notes.push(new Note(2,
-        [new ColorHex("403D88"), new ColorHex("ff00ff")],
+        [new NoteColorId(1, new ColorHex("403D88")), new NoteColorId(2, new ColorHex("ff00ff"))],
         [new NoteTitle(0, "Oscar"), new NoteTitle(1024, "Romeo"), new NoteTitle(2048, "Mike")],
         [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia"), new NoteHighlight(800, "CharlieAlphaLima"), new NoteHighlight(1145, "DeltaIndia"), new NoteHighlight(1307, "SierraOscarRomeo"), new NoteHighlight(2041, "DeltaEchoRomeo")],
         "India Lima Uniform Victor Yankee Oscar Uniform India Lima Uniform Victor Yankee Oscar Uniform India Lima Uniform Victor Yankee Oscar Uniform"));
