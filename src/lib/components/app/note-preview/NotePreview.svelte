@@ -84,5 +84,5 @@
     </aside>
     <NotePreviewTitleMenu id='{props.id}-title-menu' titles={props.titles}></NotePreviewTitleMenu>
     <NotePreviewHighlightMenu id='{props.id}-highlight-menu' highlights={props.highlights}></NotePreviewHighlightMenu>
-    <NotePreviewColorIdMenu id='{props.id}-colorid-menu' colors={props.colors}></NotePreviewColorIdMenu>
+    <NotePreviewColorIdMenu id='{props.id}-colorid-menu' colors={props.colors} noteId={props.id}></NotePreviewColorIdMenu>
 </div>

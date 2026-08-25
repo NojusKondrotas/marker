@@ -40,16 +40,20 @@
 
 
 <menu id={props.id} bind:this={colorIdMenu} class:invisible={getMenu(MenuLayers.NoteMenu) !== props.id} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
-    {#each props.colors as color (color.id)}
+    {#each props.colors as color, idx (idx)}
         <li>
-            <NotePreviewColorIdAgent {...color}></NotePreviewColorIdAgent>
+            <NotePreviewColorIdAgent {...color} idx={idx} noteId={props.noteId}></NotePreviewColorIdAgent>
         </li>
     {/each}
     <li>
         <div class="flex flex-col justify-between h-full">
-            <span>
-                <Button class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Plus strokeWidth={1.5}/></Button>
-            </span>
+            <div class="flex flex-col gap-y-1">
+                <span class="flex h-4 gap-x-1">
+                    <Button class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Plus strokeWidth={1.5}/></Button>
+                </span>
+                <span class="flex h-4 gap-x-1">
+                </span>
+            </div>
             <Item class="p-0">
                 <ItemContent>
                     <ItemDescription class="text-[0.65rem] invisible">
