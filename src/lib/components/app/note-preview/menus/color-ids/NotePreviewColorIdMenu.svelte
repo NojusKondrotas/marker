@@ -40,7 +40,7 @@
 
 
 <menu id={props.id} bind:this={colorIdMenu} class:invisible={getMenu(MenuLayers.NoteMenu) !== props.id} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
-    {#each props.colors as color, idx (idx)}
+    {#each props.colors as color, idx (color.id)}
         <li>
             <NotePreviewColorIdAgent {...color} idx={idx} noteId={props.noteId}></NotePreviewColorIdAgent>
         </li>
