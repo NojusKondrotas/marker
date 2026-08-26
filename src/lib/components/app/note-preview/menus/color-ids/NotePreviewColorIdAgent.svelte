@@ -6,7 +6,7 @@
 	import ItemDescription from "@/components/ui/item/item-description.svelte";
 	import Item from "@/components/ui/item/item.svelte";
     import Minus from '@lucide/svelte/icons/minus';
-	import { moveColorLeft, moveColorRight } from "@/shared/note_preview_updater.svelte";
+	import { moveColorLeft, moveColorRight, removeColor } from "@/shared/note_preview_updater.svelte";
 
     const props = $props();
 </script>
@@ -19,7 +19,7 @@
         </span>
         <span class="flex h-4 gap-x-1">
             <Button style="background-color: {props.hex.toString()};" class="w-4 h-4 cursor-pointer transition-none" size="icon" variant="outline"></Button>
-            <Button class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Minus strokeWidth={1.5}/></Button>
+            <Button onclick={(e) => removeColor(e, props.noteId, props.idx)} class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Minus strokeWidth={1.5}/></Button>
         </span>
     </div>
     <Item class="p-0">
