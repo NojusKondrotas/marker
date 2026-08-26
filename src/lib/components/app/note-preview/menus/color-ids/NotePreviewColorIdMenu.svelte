@@ -45,13 +45,24 @@
         const colorIdAgents = Array.from(colorIdMenu.querySelectorAll(':scope > *')) as HTMLElement[];
         colorIdMenu.scrollTo({ left: colorIdAgents[idx].offsetLeft, behavior: 'smooth' });
     }
+
+    async function onRemove(idx: number) {
+        await tick();
+        if (currentColorIdAgent === idx) {
+            if (idx > 0 && idx < colorIdMenu.childElementCount - 1) {
+                --currentColorIdAgent;
+            }
+        }
+        const colorIdAgents = Array.from(colorIdMenu.querySelectorAll(':scope > *')) as HTMLElement[];
+        colorIdMenu.scrollTo({ left: colorIdAgents[idx].offsetLeft, behavior: 'smooth' });
+    }
 </script>
 
 
 <menu id={props.id} bind:this={colorIdMenu} class:invisible={getMenu(MenuLayers.NoteMenu) !== props.id} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
     {#each props.colors as color, idx (color.id)}
         <li>
-            <NotePreviewColorIdAgent {...color} {idx} noteId={props.noteId} {onMove}></NotePreviewColorIdAgent>
+            <NotePreviewColorIdAgent {...color} {idx} noteId={props.noteId} {onMove} {onRemove}></NotePreviewColorIdAgent>
         </li>
     {/each}
     <li bind:this={addButton}>

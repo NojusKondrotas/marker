@@ -16,10 +16,16 @@
         await tick();
         props.onMove(props.idx);
     }
+
     async function handleColorRight(e: MouseEvent) {
         moveColorRight(e, props.noteId, props.idx);
         await tick();
         props.onMove(props.idx);
+    }
+
+    async function handleColorRemove(e: MouseEvent) {
+        removeColor(e, props.noteId, props.idx);
+        props.onRemove(props.idx);
     }
 </script>
 
@@ -31,7 +37,7 @@
         </span>
         <span class="flex h-4 gap-x-1">
             <Button style="background-color: {props.hex.toString()};" class="w-4 h-4 cursor-pointer transition-none" size="icon" variant="outline"></Button>
-            <Button onclick={(e) => removeColor(e, props.noteId, props.idx)} class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Minus strokeWidth={1.5}/></Button>
+            <Button onclick={(e) => handleColorRemove(e)} class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Minus strokeWidth={1.5}/></Button>
         </span>
     </div>
     <Item class="p-0">
