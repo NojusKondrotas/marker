@@ -1,3 +1,5 @@
+import ColorHex from "@/models/ColorHex";
+import NoteColorId from "@/models/NoteColorId";
 import NotesStore from "@/stores/NotesStore";
 import { get } from "svelte/store";
 
@@ -15,6 +17,27 @@ export function removeColor(e: MouseEvent, id: number, colorIdx: number): boolea
 
     const colors = [...note.colors];
     colors.splice(colorIdx, 1);
+
+    const newNote = { ...note, colors };
+    const newAllNotes = [...allNotes];
+    newAllNotes[noteIdx] = newNote;
+
+    NotesStore.set(newAllNotes);
+    return true;
+}
+
+export function addColor(e: MouseEvent, id: number): boolean {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const allNotes = get(NotesStore);
+    const noteIdx = allNotes.findIndex((note) => note.id === id);
+    if (noteIdx === -1)
+        return false;
+    const note = allNotes[noteIdx];
+
+    const colors = [...note.colors];
+    colors.push(new NoteColorId(crypto.randomUUID(), new ColorHex('f25004')));
 
     const newNote = { ...note, colors };
     const newAllNotes = [...allNotes];

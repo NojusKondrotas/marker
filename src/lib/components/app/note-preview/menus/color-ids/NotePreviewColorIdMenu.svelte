@@ -7,6 +7,7 @@
 	import Item from "@/components/ui/item/item.svelte";
 	import ItemContent from "@/components/ui/item/item-content.svelte";
 	import { ItemDescription } from "@/components/ui/item";
+	import { addColor } from "@/shared/note_preview_updater.svelte";
 
     const props = $props();
 
@@ -49,7 +50,7 @@
         <div class="flex flex-col justify-between h-full">
             <div class="flex flex-col gap-y-1">
                 <span class="flex h-4 gap-x-1">
-                    <Button class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Plus strokeWidth={1.5}/></Button>
+                    <Button onclick={(e) => addColor(e, props.noteId)} class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Plus strokeWidth={1.5}/></Button>
                 </span>
                 <span class="flex h-4 gap-x-1">
                 </span>
