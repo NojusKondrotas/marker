@@ -2,6 +2,7 @@ import { SvelteMap } from "svelte/reactivity";
 
 export enum MenuLayers {
     NoteMenu,
+    NoteColorIdMenu,
 }
 
 const openMenus: SvelteMap<MenuLayers, string> = new SvelteMap();
@@ -13,6 +14,7 @@ export function registerMenu(layer: MenuLayers, menu: string): void {
     openMenus.set(layer, menu);
 }
 
+export const isMenuLayerActive = (layer: MenuLayers) => openMenus.has(layer);
 export const isMenuRegistered = (layer: MenuLayers, id: string) => openMenus.get(layer) === id;
 
 export function unregisterMenu(layer: MenuLayers) {

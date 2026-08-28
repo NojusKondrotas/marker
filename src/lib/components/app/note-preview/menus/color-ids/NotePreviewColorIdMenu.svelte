@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, tick } from "svelte";
 	import NotePreviewColorIdAgent from "./NotePreviewColorIdAgent.svelte";
-	import { isMenuRegistered, MenuLayers } from "@/shared/menu_manager.svelte";
+	import { isMenuRegistered, MenuLayers, unregisterMenu } from "@/shared/menu_manager.svelte";
 	import Button from "@/components/ui/button/button.svelte";
     import Plus from '@lucide/svelte/icons/plus';
 	import Item from "@/components/ui/item/item.svelte";
@@ -56,13 +56,19 @@
         const colorIdAgents = Array.from(colorIdMenu.querySelectorAll(':scope > *')) as HTMLElement[];
         colorIdMenu.scrollTo({ left: colorIdAgents[idx].offsetLeft, behavior: 'smooth' });
     }
+
+    function handleStrayClick(e: MouseEvent) {
+        e.stopPropagation();
+
+        unregisterMenu(MenuLayers.NoteColorIdMenu);
+    }
 </script>
 
-
-<menu id={props.id} bind:this={colorIdMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+<menu onclick={handleStrayClick} id={props.id} bind:this={colorIdMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
     {#each props.colors as color, idx (color.id)}
         <li>
-            <NotePreviewColorIdAgent {...color} {idx} noteId={props.noteId} {onMove} {onRemove}></NotePreviewColorIdAgent>
+            <NotePreviewColorIdAgent id={`${props.noteId}+${idx}`} {...color} {idx} noteId={props.noteId} {onMove} {onRemove}></NotePreviewColorIdAgent>
         </li>
     {/each}
     <li bind:this={addButton}>

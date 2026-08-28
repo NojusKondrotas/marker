@@ -8,6 +8,7 @@
     import Minus from '@lucide/svelte/icons/minus';
 	import { moveColorLeft, moveColorRight, removeColor, updateColor } from "@/shared/note_preview_updater.svelte";
 	import { tick } from "svelte";
+	import { MenuLayers, registerMenu } from "@/shared/menu_manager.svelte";
 
     const props = $props();
 
@@ -37,9 +38,15 @@
         const newHex = e.currentTarget.value;
         updateColor(e, props.noteId, props.idx, newHex);
     }
+
+    function handleColorUpdaterClick(e: MouseEvent) {
+        e.stopPropagation();
+
+        registerMenu(MenuLayers.NoteColorIdMenu, props.id);
+    }
 </script>
 
-<div class="flex flex-col justify-between h-full">
+<div id={props.id} class="flex flex-col justify-between h-full">
     <div class="flex flex-col gap-y-1">
         <span class="flex h-4 gap-x-1">
             <Button onclick={handleColorLeft} class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><ChevronLeft strokeWidth={1.5}/></Button>
@@ -52,6 +59,7 @@
                 type="color"
                 bind:value={colorHex}
                 oninput={handleColorUpdate}
+                onclick={handleColorUpdaterClick}
             />
             <Button onclick={handleColorRemove} class="w-4 h-4 p-1.5 cursor-pointer transition-none" variant="outline" size="icon" ><Minus strokeWidth={1.5}/></Button>
         </span>
