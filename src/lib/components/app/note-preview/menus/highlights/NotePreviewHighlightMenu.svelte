@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { getMenu, MenuLayers } from "@/shared/menu_manager.svelte";
+	import { isMenuRegistered, MenuLayers } from "@/shared/menu_manager.svelte";
 	import NotePreviewHighlightAgent from "./NotePreviewHighlightAgent.svelte";
 
     const props = $props();
@@ -34,7 +34,7 @@
 </script>
 
 
-<menu id={props.id} bind:this={highlightMenu} class:invisible={getMenu(MenuLayers.NoteMenu) !== props.id} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
+<menu id={props.id} bind:this={highlightMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
     {#each props.highlights as highlights (highlights.offset)}
         <li>
             <NotePreviewHighlightAgent {...highlights}></NotePreviewHighlightAgent>

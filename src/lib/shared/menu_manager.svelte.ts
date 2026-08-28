@@ -13,8 +13,7 @@ export function registerMenu(layer: MenuLayers, menu: string): void {
     openMenus.set(layer, menu);
 }
 
-export const getMenu = (layer: MenuLayers) => openMenus.get(layer);
-export const isMenuRegistered = (layer: MenuLayers) => openMenus.has(layer);
+export const isMenuRegistered = (layer: MenuLayers, id: string) => openMenus.get(layer) === id;
 
 export function unregisterMenu(layer: MenuLayers) {
     openMenus.delete(layer);
