@@ -4,7 +4,7 @@
     let sat: number, val: number, hue: number;
     let isThumbDown = false;
 
-    function toggleSatVal(e: MouseEvent, toggle: boolean, axis: 'x' | 'both') {
+    function toggleThumb(e: MouseEvent, toggle: boolean, axis: 'x' | 'both') {
         isThumbDown = toggle;
         positionThumb(e, axis);
     }
@@ -25,7 +25,7 @@
     }
 
     function toggleSatValThumb(e: MouseEvent, toggle: boolean) {
-        toggleSatVal(e, toggle, 'both');
+        toggleThumb(e, toggle, 'both');
     }
 
     function positionSatValThumb(e: MouseEvent) {
@@ -36,7 +36,7 @@
     }
 
     function toggleHueThumb(e: MouseEvent, toggle: boolean) {
-        toggleSatVal(e, toggle, 'x');
+        toggleThumb(e, toggle, 'x');
     }
 
     function positionHueThumb(e: MouseEvent) {
@@ -51,7 +51,6 @@
     <div
         onpointerdown={(e) => toggleSatValThumb(e, true)}
         onpointerup={(e) => toggleSatValThumb(e, false)}
-        onpointerleave={(e) => toggleSatValThumb(e, false)}
         onpointermove={positionSatValThumb}
         class="color-picker-sat-val w-full aspect-square border">
         <div bind:this={thumbSatVal} class="relative w-[6px] h-[6px] outline outline-black border border-white -translate-x-1/2 -translate-y-1/2">
@@ -60,7 +59,6 @@
     <div
         onpointerdown={(e) => toggleHueThumb(e, true)}
         onpointerup={(e) => toggleHueThumb(e, false)}
-        onpointerleave={(e) => toggleHueThumb(e, false)}
         onpointermove={positionHueThumb}
         class="color-picker-hue w-full h-[16px] border">
         <div bind:this={thumbHue} class="relative w-[6px] h-full outline outline-black border border-white -translate-x-1/2">
