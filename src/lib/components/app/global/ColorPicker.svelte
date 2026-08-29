@@ -4,12 +4,20 @@
     let sat: number, val: number, hue: number;
     let isThumbDown = false;
 
-    function toggleThumb(e: MouseEvent, toggle: boolean, axis: 'x' | 'both') {
+    function toggleThumb(e: PointerEvent, toggle: boolean, axis: 'x' | 'both') {
         isThumbDown = toggle;
+
+        const dispatcher = (e.currentTarget as HTMLElement);
+        if (toggle) {
+            dispatcher.setPointerCapture(e.pointerId);
+        } else {
+            dispatcher.releasePointerCapture(e.pointerId);
+        }
+
         positionThumb(e, axis);
     }
 
-    function positionThumb(e: MouseEvent, axis: 'x' | 'both') {
+    function positionThumb(e: PointerEvent, axis: 'x' | 'both') {
         if (!isThumbDown) return null;
         
         const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -24,22 +32,22 @@
         return { x: x / rect.width, y: y / rect.height };
     }
 
-    function toggleSatValThumb(e: MouseEvent, toggle: boolean) {
+    function toggleSatValThumb(e: PointerEvent, toggle: boolean) {
         toggleThumb(e, toggle, 'both');
     }
 
-    function positionSatValThumb(e: MouseEvent) {
+    function positionSatValThumb(e: PointerEvent) {
         const pos = positionThumb(e, 'both');
         if (!pos) return;
         sat = pos.x;
         val = pos.y;
     }
 
-    function toggleHueThumb(e: MouseEvent, toggle: boolean) {
+    function toggleHueThumb(e: PointerEvent, toggle: boolean) {
         toggleThumb(e, toggle, 'x');
     }
 
-    function positionHueThumb(e: MouseEvent) {
+    function positionHueThumb(e: PointerEvent) {
         const pos = positionThumb(e, 'x');
         if (!pos) return;
         hue = Math.round(pos.x * 360);
