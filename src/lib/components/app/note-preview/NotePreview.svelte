@@ -1,14 +1,19 @@
 <script lang="ts">
-    import CardContent from "@/components/ui/card/card-content.svelte";
-	import Card from "@/components/ui/card/card.svelte";
-	import NotePreviewAgent from "@/components/app/note-preview/NotePreviewAgent.svelte";
-	import CardHeader from "@/components/ui/card/card-header.svelte";
-	import NotePreviewColorIdBar from "@/components/app/note-preview/NotePreviewColorIdBar.svelte";
 	import { onMount } from "svelte";
 	import { MenuLayers, registerMenu, unregisterMenu } from "@/shared/menu_manager.svelte";
-	import NotePreviewTitleMenu from "./menus/titles/NotePreviewTitleMenu.svelte";
-	import NotePreviewHighlightMenu from "./menus/highlights/NotePreviewHighlightMenu.svelte";
+	import Card from "@/components/ui/card/card.svelte";
+    import CardContent from "@/components/ui/card/card-content.svelte";
+	import CardHeader from "@/components/ui/card/card-header.svelte";
+	import NotePreviewAgent from "@/components/app/note-preview/NotePreviewAgent.svelte";
+	import NotePreviewColorIdBar from "@/components/app/note-preview/NotePreviewColorIdBar.svelte";
 	import NotePreviewColorIdMenu from "./menus/color-ids/NotePreviewColorIdMenu.svelte";
+	import NotePreviewHighlightMenu from "./menus/highlights/NotePreviewHighlightMenu.svelte";
+	import NotePreviewTitleMenu from "./menus/titles/NotePreviewTitleMenu.svelte";
+	import ColorPicker from "../global/ColorPicker.svelte";
+	import type Note from "@/models/Note";
+
+    type Props = InstanceType<typeof Note> & { style: number };
+    const props: Props = $props();
 
     const Menus = Object.freeze({
         ColorId: "ColorId",
@@ -16,8 +21,6 @@
         Title: "Title",
     });
     type Menus = (typeof Menus)[keyof typeof Menus];
-
-    const props = $props();
 
     let titleMenu: HTMLElement, titleMenuAgent: HTMLElement;
     let highlightMenu: HTMLElement, highlightMenuAgent: HTMLElement;
@@ -61,6 +64,7 @@
 </script>
 
 
+<ColorPicker></ColorPicker>
 <div class="flex">
     <aside class="mr-1.5 w-max flex flex-col gap-y-2">
         <NotePreviewAgent id="{props.id}-colorid-menuagent" onclick={(e: Event) => onClickMenu(e, Menus.ColorId)} type="squareOff" />

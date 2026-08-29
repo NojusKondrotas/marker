@@ -8,8 +8,14 @@
 	import ItemContent from "@/components/ui/item/item-content.svelte";
 	import { ItemDescription } from "@/components/ui/item";
 	import { addColor } from "@/shared/note_preview_updater.svelte";
+	import type Note from "@/models/Note";
 
-    const props = $props();
+    interface Props {
+        id: string;
+        noteId: number;
+        colors: InstanceType<typeof Note>['colors'];
+    }
+    const props: Props = $props();
 
     let currentColorIdAgent = 0;
 
@@ -68,7 +74,7 @@
 <menu onclick={handleStrayClick} id={props.id} bind:this={colorIdMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
     {#each props.colors as color, idx (color.id)}
         <li>
-            <NotePreviewColorIdAgent id={`${props.noteId}+${idx}`} {...color} {idx} noteId={props.noteId} {onMove} {onRemove}></NotePreviewColorIdAgent>
+            <NotePreviewColorIdAgent {...color} {idx} noteId={props.noteId} {onMove} {onRemove}></NotePreviewColorIdAgent>
         </li>
     {/each}
     <li bind:this={addButton}>

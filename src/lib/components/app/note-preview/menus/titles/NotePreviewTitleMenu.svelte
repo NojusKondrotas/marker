@@ -2,8 +2,13 @@
 	import { onMount } from "svelte";
 	import NotePreviewTitleAgent from "./NotePreviewTitleAgent.svelte";
 	import { isMenuRegistered, MenuLayers } from "@/shared/menu_manager.svelte";
+	import type Note from "@/models/Note";
 
-    const props = $props();
+    interface Props {
+        id: string;
+        titles: InstanceType<typeof Note>['titles'];
+    }
+    const props: Props = $props();
 
     let currentTitleAgent = 0;
 

@@ -9,13 +9,17 @@
 	import { moveColorLeft, moveColorRight, removeColor, updateColor } from "@/shared/note_preview_updater.svelte";
 	import { tick } from "svelte";
 	import { MenuLayers, registerMenu } from "@/shared/menu_manager.svelte";
+	import type NoteColorId from "@/models/NoteColorId";
 
-    const props = $props();
+    type Props = InstanceType<typeof NoteColorId> & {
+        idx: number,
+        noteId: number,
+        onMove: (idx: number) => void,
+        onRemove: (idx: number) => void
+    };
+    const props: Props = $props();
 
-    let colorHex = $state(props.hex.toString());
-    $effect(() => {
-        colorHex = props.hex.toString();
-    });
+    let colorHex = $derived(props.hex.toString());
 
     async function handleColorLeft(e: MouseEvent) {
         moveColorLeft(e, props.noteId, props.idx);

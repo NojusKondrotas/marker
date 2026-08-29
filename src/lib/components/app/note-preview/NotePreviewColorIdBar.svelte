@@ -1,12 +1,17 @@
-<script>
+<script lang="ts">
 	import Button from "@/components/ui/button/button.svelte";
 	import Input from "@/components/ui/input/input.svelte";
 	import ItemContent from "@/components/ui/item/item-content.svelte";
 	import ItemDescription from "@/components/ui/item/item-description.svelte";
 	import Item from "@/components/ui/item/item.svelte";
+	import type Note from "@/models/Note";
     import Plus from '@lucide/svelte/icons/plus';
 
-    const props = $props();
+    interface Props {
+        style: number;
+        colors: InstanceType<typeof Note>['colors'];
+    }
+    const props: Props = $props();
 </script>
 
 <section class="flex gap-x-3">

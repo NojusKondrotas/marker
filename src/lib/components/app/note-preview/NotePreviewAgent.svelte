@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Button from "@/components/ui/button/button.svelte";
     import Copy from '@lucide/svelte/icons/copy';
     import Network from '@lucide/svelte/icons/network';
@@ -9,7 +9,12 @@
     import Trash2 from '@lucide/svelte/icons/trash-2';
     import Type from '@lucide/svelte/icons/type';
 
-    const props = $props();
+    interface Props {
+        id?: string;
+        onclick?: (e: Event) => void;
+        type: keyof typeof icons;
+    }
+    const props: Props = $props();
 
     const icons = {
         play: Play,
@@ -22,7 +27,7 @@
         trash: Trash2,
     };
     
-    const Icon = icons[props.type];
+    const Icon = $derived(icons[props.type]);
 </script>
 
 <Button id={props.id ?? undefined} onclick={props.onclick ?? undefined} class="shadow-sm w-2 h-2 box-content p-1.5 cursor-pointer" variant="outline" size="icon-xs" >

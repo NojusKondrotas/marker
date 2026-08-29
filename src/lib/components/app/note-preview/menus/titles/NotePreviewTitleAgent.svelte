@@ -1,9 +1,11 @@
 <script lang="ts">
 	import Badge from "@/components/ui/badge/badge.svelte";
     import Button from "@/components/ui/button/button.svelte";
+	import type NoteTitle from "@/models/NoteTitle";
     import CornerRightUp from '@lucide/svelte/icons/corner-right-up';
 
-    const props = $props();
+    type Props = InstanceType<typeof NoteTitle>;
+    const props: Props = $props();
 </script>
 
 <div class="flex flex-col pl-1">
