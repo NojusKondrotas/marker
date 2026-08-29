@@ -1,7 +1,7 @@
 <script lang="ts">
 
     let thumbSatVal: HTMLElement, thumbHue: HTMLElement;
-    let sat: number, val: number, hue: number;
+    let sat = $state(0), val = $state(0), hue = $state(0);
     let isThumbDown = false;
 
     function toggleThumb(e: PointerEvent, toggle: boolean, axis: 'x' | 'both') {
@@ -60,7 +60,11 @@
         onpointerdown={(e) => toggleSatValThumb(e, true)}
         onpointerup={(e) => toggleSatValThumb(e, false)}
         onpointermove={positionSatValThumb}
-        class="color-picker-sat-val w-full aspect-square border">
+        class="w-full aspect-square border"
+        style="background:
+            linear-gradient(to top, black, transparent),
+            linear-gradient(to right, white, transparent),
+            hsl({hue}, 100%, 50%);">
         <div bind:this={thumbSatVal} class="relative w-[6px] h-[6px] outline outline-black border border-white -translate-x-1/2 -translate-y-1/2">
         </div>
     </div>
@@ -75,13 +79,6 @@
 </div>
 
 <style>
-    :global(.color-picker-sat-val) {
-        background:
-            linear-gradient(to top, black, transparent),
-            linear-gradient(to right, white, transparent),
-            hsl(0, 100%, 50%);
-    }
-
     :global(.color-picker-hue) {
         background: linear-gradient(to right,
             hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%),
