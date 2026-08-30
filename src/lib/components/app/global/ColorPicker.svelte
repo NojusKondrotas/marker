@@ -12,7 +12,18 @@
         hex = convertHSV(hue, sat, val).toString().substring(1);
     }
 
-    function toggleThumb(e: PointerEvent, toggle: boolean, axis: 'x' | 'both') {
+    function updateHue(pos: {x: number, y: number }) {
+        hue = Math.round(pos.x * 360);
+        updateHex()
+    }
+
+    function updateSatVal(pos: {x: number, y: number }) {
+        sat = pos.x;
+        val = 1 - pos.y;
+        updateHex();
+    }
+
+    function toggleThumb(e: PointerEvent, toggle: boolean) {
         isThumbDown = toggle;
 
         const dispatcher = (e.currentTarget as HTMLElement);
@@ -21,8 +32,6 @@
         } else {
             dispatcher.releasePointerCapture(e.pointerId);
         }
-
-        positionThumb(e, axis);
     }
 
     function positionThumb(e: PointerEvent, axis: 'x' | 'both') {
@@ -41,28 +50,25 @@
     }
 
     function toggleSatValThumb(e: PointerEvent, toggle: boolean) {
-        toggleThumb(e, toggle, 'both');
+        toggleThumb(e, toggle);
+        positionSatValThumb(e);
     }
 
     function positionSatValThumb(e: PointerEvent) {
         const pos = positionThumb(e, 'both');
         if (!pos) return;
-        sat = pos.x;
-        val = 1 - pos.y;
-
-        updateHex();
+        updateSatVal(pos);
     }
 
     function toggleHueThumb(e: PointerEvent, toggle: boolean) {
-        toggleThumb(e, toggle, 'x');
+        toggleThumb(e, toggle);
+        positionHueThumb(e);
     }
 
     function positionHueThumb(e: PointerEvent) {
         const pos = positionThumb(e, 'x');
         if (!pos) return;
-        hue = Math.round(pos.x * 360);
-
-        updateHex();
+        updateHue(pos);
     }
 </script>
 
