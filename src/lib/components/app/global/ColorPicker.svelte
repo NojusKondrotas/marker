@@ -1,8 +1,16 @@
 <script lang="ts">
+	import Input from "@/components/ui/input/input.svelte";
+	import { convertHSV } from "@/shared/utils";
+
 
     let thumbSatVal: HTMLElement, thumbHue: HTMLElement;
     let sat = $state(0), val = $state(0), hue = $state(0);
+    let hex = $state('ffffff');
     let isThumbDown = false;
+
+    function updateHex() {
+        hex = convertHSV(hue, sat, val).toString().substring(1);
+    }
 
     function toggleThumb(e: PointerEvent, toggle: boolean, axis: 'x' | 'both') {
         isThumbDown = toggle;
@@ -40,7 +48,9 @@
         const pos = positionThumb(e, 'both');
         if (!pos) return;
         sat = pos.x;
-        val = pos.y;
+        val = 1 - pos.y;
+
+        updateHex();
     }
 
     function toggleHueThumb(e: PointerEvent, toggle: boolean) {
@@ -51,11 +61,13 @@
         const pos = positionThumb(e, 'x');
         if (!pos) return;
         hue = Math.round(pos.x * 360);
+
+        updateHex();
     }
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="flex flex-col w-[140px] h-[160px] border p-[10px] gap-y-[4px] box-content">
+<div class="flex flex-col w-[140px] border p-[10px] gap-y-[4px] box-content">
     <div
         onpointerdown={(e) => toggleSatValThumb(e, true)}
         onpointerup={(e) => toggleSatValThumb(e, false)}
@@ -75,6 +87,10 @@
         class="color-picker-hue w-full h-[16px] border">
         <div bind:this={thumbHue} class="relative w-[6px] h-full outline outline-black border border-white -translate-x-1/2">
         </div>
+    </div>
+    <div class="flex gap-x-0.5">
+        <p class="h-fit text-sm">#</p>
+        <Input class="p-0 h-fit" value={hex} />
     </div>
 </div>
 
