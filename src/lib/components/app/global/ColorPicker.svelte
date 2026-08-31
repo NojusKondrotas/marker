@@ -83,7 +83,7 @@
 
         thumbSatVal.style.left = `${sat * 100}%`;
         thumbSatVal.style.top = `${(1 - val) * 100}%`;
-        thumbHue.style.left = `${(hue / 360) * 100}%`;
+        thumbHue.style.left = `${Math.round((hue / 360) * 100)}%`;
     };
 </script>
 
