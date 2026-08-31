@@ -25,7 +25,31 @@ export function isValidColorHex(hex: string): boolean {
     return true;
 }
 
-export function convertHSV(hue: number, sat: number, val: number): ColorHex {
+export function hexToHSV(hex: string): { hue: number, sat: number, val: number } {
+    if (!isValidColorHex(hex))
+        return { hue: -1, sat: -1, val : -1 };
+
+    const int = parseInt(hex, 16);
+    const r = ((int >> 16) & 255) / 255;
+    const g = ((int >> 8) & 255) / 255;
+    const b = (int & 255) / 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const delta = max - min;
+
+    let hue = 0;
+    if (delta !== 0) {
+        if (max === r) hue = 60 * (((g - b) / delta) % 6);
+        else if (max === g) hue = 60 * ((b - r) / delta + 2);
+        else hue = 60 * ((r - g) / delta + 4);
+    }
+    if (hue < 0) hue += 360;
+
+    return { hue, sat: max === 0 ? 0 : delta / max, val: max };
+}
+
+export function hsvToHex(hue: number, sat: number, val: number): ColorHex {
     if (hue < 0 || hue > 360
         || sat < 0 || sat > 1
         || val < 0 || val > 1

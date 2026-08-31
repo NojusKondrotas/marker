@@ -1,3 +1,5 @@
+import { isValidColorHex } from "@/shared/utils";
+
 export default class ColorHex {
     hex: string;
     

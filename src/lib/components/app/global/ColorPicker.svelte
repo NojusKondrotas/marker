@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Input from "@/components/ui/input/input.svelte";
-	import { convertHSV } from "@/shared/utils";
-
+	import { hexToHSV, hsvToHex } from "@/shared/utils";
+	import type { FormEventHandler } from "svelte/elements";
 
     let thumbSatVal: HTMLElement, thumbHue: HTMLElement;
     let sat = $state(0), val = $state(0), hue = $state(0);
@@ -9,7 +9,7 @@
     let isThumbDown = false;
 
     function updateHex() {
-        hex = convertHSV(hue, sat, val).toString().substring(1);
+        hex = hsvToHex(hue, sat, val).toString().substring(1);
     }
 
     function updateHue(pos: {x: number, y: number }) {
@@ -70,6 +70,21 @@
         if (!pos) return;
         updateHue(pos);
     }
+
+    const inputHex: FormEventHandler<HTMLInputElement> = (e) => {
+        const input = e.currentTarget.value;
+        const converted = hexToHSV(input);
+        if (converted.hue === -1)
+            return;
+
+        hue = Math.round(converted.hue);
+        sat = converted.sat;
+        val = converted.val;
+
+        thumbSatVal.style.left = `${sat * 100}%`;
+        thumbSatVal.style.top = `${(1 - val) * 100}%`;
+        thumbHue.style.left = `${(hue / 360) * 100}%`;
+    };
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -96,7 +111,7 @@
     </div>
     <div class="flex gap-x-0.5">
         <p class="h-fit text-sm">#</p>
-        <Input class="p-0 h-fit" value={hex} />
+        <Input class="p-0 h-fit" oninput={inputHex} value={hex} />
     </div>
 </div>
 
