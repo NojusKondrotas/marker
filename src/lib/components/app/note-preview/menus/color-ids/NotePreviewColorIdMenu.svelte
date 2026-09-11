@@ -9,6 +9,8 @@
 	import { ItemDescription } from "@/components/ui/item";
 	import { addColor } from "@/shared/note_preview_updater.svelte";
 	import type Note from "@/models/Note";
+	import NoteColorId from "@/models/NoteColorId";
+	import ColorHex from "@/models/ColorHex";
 
     interface Props {
         id: string;

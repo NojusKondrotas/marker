@@ -47,19 +47,17 @@ export function addColor(e: MouseEvent, id: number): boolean {
     return true;
 }
 
-export function updateColor(e: Event, id: number, colorIdx: number, colorHex: string): boolean {
-    e.stopPropagation();
-
+export function updateColor(id: number, colorIdx: number, colorHex: string): boolean {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)
         return false;
     const note = allNotes[noteIdx];
-    if (colorIdx < 0 || colorIdx >= note.colors.length || colorHex.length != 7)
+    if (colorIdx < 0 || colorIdx >= note.colors.length || colorHex.length != 6)
         return false;
 
     const colors = note.colors.map((c, i) =>
-        i === colorIdx ? new NoteColorId(c.id, new ColorHex(colorHex.substring(1))) : c
+        i === colorIdx ? new NoteColorId(c.id, new ColorHex(colorHex)) : c
     );
 
     const newNote = { ...note, colors };

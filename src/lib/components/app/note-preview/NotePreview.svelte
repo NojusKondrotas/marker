@@ -63,8 +63,6 @@
     }
 </script>
 
-
-<ColorPicker></ColorPicker>
 <div class="flex">
     <aside class="mr-1.5 w-max flex flex-col gap-y-2">
         <NotePreviewAgent id="{props.id}-colorid-menuagent" onclick={(e: Event) => onClickMenu(e, Menus.ColorId)} type="squareOff" />

@@ -1,15 +1,41 @@
 <script lang="ts">
 	import Input from "@/components/ui/input/input.svelte";
 	import { hexToHSV, hsvToHex } from "@/shared/utils";
+	import { onMount } from "svelte";
 	import type { FormEventHandler } from "svelte/elements";
+
+    let {
+        hex = $bindable('ffffff'),
+        onInput,
+    }: { hex?: string, onInput?: (hex: string) => void } = $props();
 
     let thumbSatVal: HTMLElement, thumbHue: HTMLElement;
     let sat = $state(0), val = $state(0), hue = $state(0);
-    let hex = $state('ffffff');
     let isThumbDown = false;
 
+    onMount(() => {
+        syncFromHex(hex);
+	});
+
+    function syncFromHex(value: string) {
+        const converted = hexToHSV(value);
+        if (converted.hue === -1)
+            return;
+
+        hex = value;
+        hue = Math.round(converted.hue);
+        sat = converted.sat;
+        val = converted.val;
+
+        thumbSatVal.style.left = `${sat * 100}%`;
+        thumbSatVal.style.top = `${(1 - val) * 100}%`;
+        thumbHue.style.left = `${Math.round((hue / 360) * 100)}%`;
+    }
+
     function updateHex() {
-        hex = hsvToHex(hue, sat, val).toString().substring(1);
+        hex = hsvToHex(hue, sat, val).hex;
+        if (onInput)
+            onInput(hex);
     }
 
     function updateHue(pos: {x: number, y: number }) {
@@ -72,23 +98,16 @@
     }
 
     const inputHex: FormEventHandler<HTMLInputElement> = (e) => {
-        const input = e.currentTarget.value;
-        const converted = hexToHSV(input);
-        if (converted.hue === -1)
-            return;
-
-        hue = Math.round(converted.hue);
-        sat = converted.sat;
-        val = converted.val;
-
-        thumbSatVal.style.left = `${sat * 100}%`;
-        thumbSatVal.style.top = `${(1 - val) * 100}%`;
-        thumbHue.style.left = `${Math.round((hue / 360) * 100)}%`;
+        syncFromHex(e.currentTarget.value);
+        if (onInput)
+            onInput(hex);
     };
 </script>
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="flex flex-col w-[140px] border p-[10px] gap-y-[4px] box-content">
+<!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
+<div class="absolute flex flex-col w-[140px] border p-[10px] gap-y-[4px] mt-[8px] box-content bg-white"
+    onclick={(e) => e.stopPropagation()}
+>
     <div
         onpointerdown={(e) => toggleSatValThumb(e, true)}
         onpointerup={(e) => toggleSatValThumb(e, false)}
