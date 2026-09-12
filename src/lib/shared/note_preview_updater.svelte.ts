@@ -33,7 +33,7 @@ export function addColor(id: UUID): boolean {
     const colors = [...note.colors];
     if (colors.length === 18)
         return false;
-    colors.push(new NoteColorId(crypto.randomUUID(), new ColorHex('f25004')));
+    colors.push(new NoteColorId(new ColorHex('f25004')));
 
     const newNote = { ...note, colors };
     allNotes[noteIdx] = newNote;
@@ -52,7 +52,7 @@ export function updateColor(id: UUID, colorIdx: number, colorHex: string): boole
         return false;
 
     const colors = note.colors.map((c, i) =>
-        i === colorIdx ? new NoteColorId(c.id, new ColorHex(colorHex)) : c
+        i === colorIdx ? new NoteColorId(new ColorHex(colorHex), c.id) : c
     );
 
     const newNote = { ...note, colors };

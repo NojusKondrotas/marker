@@ -5,8 +5,8 @@ export default class NoteColorId {
     id: UUID;
     hex: ColorHex;
 
-    constructor(id: UUID, hex: ColorHex) {
-        this.id = id;
+    constructor(hex: ColorHex, id?: UUID) {
+        this.id = id ? id : crypto.randomUUID();
         this.hex = hex;
     }
 }
