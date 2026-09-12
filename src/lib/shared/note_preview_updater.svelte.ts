@@ -19,10 +19,9 @@ export function removeColor(e: MouseEvent, id: number, colorIdx: number): boolea
     colors.splice(colorIdx, 1);
 
     const newNote = { ...note, colors };
-    const newAllNotes = [...allNotes];
-    newAllNotes[noteIdx] = newNote;
+    allNotes[noteIdx] = newNote;
 
-    NotesStore.set(newAllNotes);
+    NotesStore.set(allNotes);
     return true;
 }
 
@@ -40,10 +39,9 @@ export function addColor(e: MouseEvent, id: number): boolean {
     colors.push(new NoteColorId(crypto.randomUUID(), new ColorHex('f25004')));
 
     const newNote = { ...note, colors };
-    const newAllNotes = [...allNotes];
-    newAllNotes[noteIdx] = newNote;
+    allNotes[noteIdx] = newNote;
 
-    NotesStore.set(newAllNotes);
+    NotesStore.set(allNotes);
     return true;
 }
 
@@ -61,10 +59,9 @@ export function updateColor(id: number, colorIdx: number, colorHex: string): boo
     );
 
     const newNote = { ...note, colors };
-    const newAllNotes = [...allNotes];
-    newAllNotes[noteIdx] = newNote;
+    allNotes[noteIdx] = newNote;
 
-    NotesStore.set(newAllNotes);
+    NotesStore.set(allNotes);
     return true;
 }
 
@@ -88,10 +85,9 @@ export function moveColorLeft(e: MouseEvent, id: number, colorIdx: number): bool
     }
 
     const newNote = { ...note, colors };
-    const newAllNotes = [...allNotes];
-    newAllNotes[noteIdx] = newNote;
+    allNotes[noteIdx] = newNote;
 
-    NotesStore.set(newAllNotes);
+    NotesStore.set(allNotes);
     return true;
 }
 
@@ -115,9 +111,8 @@ export function moveColorRight(e: MouseEvent, id: number, colorIdx: number) {
     }
 
     const newNote = { ...note, colors };
-    const newAllNotes = [...allNotes];
-    newAllNotes[noteIdx] = newNote;
+    allNotes[noteIdx] = newNote;
 
-    NotesStore.set(newAllNotes);
+    NotesStore.set(allNotes);
     return true;
 }
