@@ -1,12 +1,10 @@
-import NotesStore from '@/stores/NotesStore.js';
 import { error } from '@sveltejs/kit';
-import { get } from 'svelte/store';
 
-export async function load( { params } ) {
+export async function load( { params, parent } ) {
     const { note, mark } = params;
 
-    const allNotes = get(NotesStore);
-    const linkedNote = allNotes.find((curr) => curr.id === note);
+    const { notes } = await parent();
+    const linkedNote = notes.find((curr) => curr.id === note);
 
     if (!linkedNote) throw error(404);
 

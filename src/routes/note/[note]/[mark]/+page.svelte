@@ -1,9 +1,11 @@
 <script lang="ts">
-    const { data } = $props();
+	import { page } from "$app/state";
+
+    const { note, mark } = page.params;
 </script>
 
-<p>{data.note}</p>
-<p>{data.mark}</p>
+<p>{note}</p>
+<p>{mark}</p>
 <pre class="whitespace-normal"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut efficitur metus, id gravida ante. Praesent ac convallis magna. Donec vel libero sagittis, vehicula diam et, suscipit nulla. Integer quis porta risus, at commodo odio. Sed luctus dui risus, ut condimentum mauris lobortis ac. Vestibulum non eleifend turpis. Aenean ut sodales risus. Phasellus euismod imperdiet faucibus. Aenean pretium quis lorem et vulputate. Nulla eget volutpat neque, ac pharetra sapien. Donec ante tortor, tincidunt nec justo sed, posuere volutpat magna. Praesent sapien lorem, laoreet volutpat fermentum vitae, pellentesque ornare mi. Suspendisse velit odio, luctus at libero ac, vehicula finibus orci. Praesent bibendum, lorem vitae scelerisque dapibus, dolor felis posuere ex, ac rutrum ipsum velit id ipsum.
 Vivamus urna orci, imperdiet vestibulum consequat in, sodales ac orci. Nullam urna ligula, auctor nec elit ut, dapibus fringilla mi. Aenean vestibulum velit et nibh viverra eleifend. Sed id tortor eget magna imperdiet lacinia non feugiat massa. Sed fringilla sit amet leo id ultricies. Cras gravida eget ex at sagittis. Nullam pharetra faucibus urna sed placerat. Praesent diam tortor, sagittis sed quam vel, semper placerat risus. Morbi gravida odio vitae pretium aliquam. Vestibulum erat sapien, consequat nec rutrum eget, pulvinar eu odio. Integer metus metus, finibus vitae lectus ac, pretium varius purus.
 Ut ut pharetra sem, id pretium elit. Suspendisse potenti. Suspendisse aliquam sapien elit, eu gravida orci suscipit dapibus. Pellentesque vehicula mollis diam, eu posuere ipsum scelerisque non. Sed convallis mollis lorem quis sollicitudin. Phasellus elit neque, bibendum at ex et, mollis molestie mauris. Donec et nibh felis. Maecenas et leo eleifend, feugiat lorem eu, mattis magna.
