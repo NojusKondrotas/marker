@@ -14,7 +14,7 @@
     const props: Props = $props();
 </script>
 
-<section class="flex gap-x-3">
+<section class="flex flex-wrap gap-y-2 gap-x-3">
     {#if props.style == 1}
         {#each props.colors as color (color.id)}
             <div class="flex flex-col justify-between h-full">
