@@ -23,25 +23,25 @@ export async function load() {
         '40402e14-7fde-4600-8cc3-9a9f78de6cdd',
         [],
         [new NoteTitle(0, "Oscar"), new NoteTitle(384, "Romeo"), new NoteTitle(2565458, "Mike")],
-        [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia"), new NoteHighlight(800, "CharlieAlphaLima"), new NoteHighlight(1145, "DeltaIndia"), new NoteHighlight(1307, "SierraOscarRomeo"), new NoteHighlight(2041, "DeltaEchoRomeo")],
+        [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia")],
         "India Lima Uniform Victor Yankee Oscar Uniform India Lima Uniform Victor Yankee Oscar Uniform"));
     notes.push(new NotePreview(
         '2f2a8e65-e103-4476-9cfc-ee08395e1a5c',
         [],
         [new NoteTitle(0, "Oscar"), new NoteTitle(256, "Romeo"), new NoteTitle(512, "Mike")],
-        [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia"), new NoteHighlight(800, "CharlieAlphaLima"), new NoteHighlight(1145, "DeltaIndia"), new NoteHighlight(1307, "SierraOscarRomeo"), new NoteHighlight(2041, "DeltaEchoRomeo")],
+        [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia"), new NoteHighlight(800, "CharlieAlphaLima")],
         "India Lima Uniform Victor Yankee Oscar Uniform"));
     notes.push(new NotePreview(
         '96fa3e23-643d-46ee-92b6-444bd30e30be',
         [],
         [new NoteTitle(0, "Oscar"), new NoteTitle(256, "Romeo"), new NoteTitle(512, "Mike")],
-        [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia"), new NoteHighlight(800, "CharlieAlphaLima"), new NoteHighlight(1145, "DeltaIndia"), new NoteHighlight(1307, "SierraOscarRomeo"), new NoteHighlight(2041, "DeltaEchoRomeo")],
+        [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar")],
         "India Lima Uniform Victor Yankee Oscar Uniform"));
     notes.push(new NotePreview(
         '57cc5e62-5d51-43f0-a827-f78037aa2596',
         [],
         [new NoteTitle(0, "Oscar"), new NoteTitle(256, "Romeo"), new NoteTitle(512, "Mike")],
-        [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia"), new NoteHighlight(800, "CharlieAlphaLima"), new NoteHighlight(1145, "DeltaIndia"), new NoteHighlight(1307, "SierraOscarRomeo"), new NoteHighlight(2041, "DeltaEchoRomeo")],
+        [new NoteHighlight(9, "PapaSierraYankee")],
         "India Lima Uniform Victor Yankee Oscar Uniform"));
 
     NotesStore.set(notes);
