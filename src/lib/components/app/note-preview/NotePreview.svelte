@@ -9,7 +9,6 @@
 	import NotePreviewColorIdMenu from "./menus/color-ids/NotePreviewColorIdMenu.svelte";
 	import NotePreviewHighlightMenu from "./menus/highlights/NotePreviewHighlightMenu.svelte";
 	import NotePreviewTitleMenu from "./menus/titles/NotePreviewTitleMenu.svelte";
-	import ColorPicker from "../global/ColorPicker.svelte";
 	import type Note from "@/models/Note";
 
     type Props = InstanceType<typeof Note> & { style: number };

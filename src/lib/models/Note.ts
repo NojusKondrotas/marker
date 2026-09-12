@@ -1,16 +1,17 @@
+import type { UUID } from "crypto";
 import type NoteColorId from "./NoteColorId";
 import type NoteHighlight from "./NoteHighlight";
 import type NoteTitle from "./NoteTitle";
 
 export default class Note {
-    id: number;
+    id: UUID;
     colors: NoteColorId[];
     titles: NoteTitle[];
     highlights: NoteHighlight[];
     content: string;
 
-    constructor(id: number, colors: NoteColorId[], titles: NoteTitle[], highlights: NoteHighlight[], content: string) {
-        this.id = id;
+    constructor(colors: NoteColorId[], titles: NoteTitle[], highlights: NoteHighlight[], content: string) {
+        this.id = crypto.randomUUID();
         this.colors = colors;
         this.titles = titles;
         this.highlights = highlights;

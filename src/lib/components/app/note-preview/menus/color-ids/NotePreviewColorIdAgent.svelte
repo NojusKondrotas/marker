@@ -11,10 +11,11 @@
 	import { isMenuRegistered, MenuLayers, registerMenu, unregisterMenu } from "@/shared/menu_manager.svelte";
 	import type NoteColorId from "@/models/NoteColorId";
 	import ColorPicker from "@/components/app/global/ColorPicker.svelte";
+	import type { UUID } from "crypto";
 
     type Props = InstanceType<typeof NoteColorId> & {
         idx: number,
-        noteId: number,
+        noteId: UUID,
         onMove: (idx: number) => void,
         onRemove: (idx: number) => void
     };
