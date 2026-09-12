@@ -2,11 +2,11 @@
 	import { onMount } from "svelte";
 	import { isMenuRegistered, MenuLayers } from "@/shared/menu_manager.svelte";
 	import NotePreviewHighlightAgent from "./NotePreviewHighlightAgent.svelte";
-	import type Note from "@/models/Note";
+	import type NotePreview from "@/models/NotePreview";
 
     interface Props {
         id: string;
-        highlights: InstanceType<typeof Note>['highlights'];
+        highlights: InstanceType<typeof NotePreview>['highlights'];
     }
     const props: Props = $props();
 

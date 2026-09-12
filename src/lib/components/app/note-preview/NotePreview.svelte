@@ -9,9 +9,9 @@
 	import NotePreviewColorIdMenu from "./menus/color-ids/NotePreviewColorIdMenu.svelte";
 	import NotePreviewHighlightMenu from "./menus/highlights/NotePreviewHighlightMenu.svelte";
 	import NotePreviewTitleMenu from "./menus/titles/NotePreviewTitleMenu.svelte";
-	import type Note from "@/models/Note";
+	import type NotePreview from "@/models/NotePreview";
 
-    type Props = InstanceType<typeof Note> & { style: number };
+    type Props = InstanceType<typeof NotePreview> & { style: number };
     const props: Props = $props();
 
     const Menus = Object.freeze({

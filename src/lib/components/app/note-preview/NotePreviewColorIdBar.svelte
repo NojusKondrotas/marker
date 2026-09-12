@@ -4,12 +4,12 @@
 	import ItemContent from "@/components/ui/item/item-content.svelte";
 	import ItemDescription from "@/components/ui/item/item-description.svelte";
 	import Item from "@/components/ui/item/item.svelte";
-	import type Note from "@/models/Note";
+	import type NotePreview from "@/models/NotePreview";
     import Plus from '@lucide/svelte/icons/plus';
 
     interface Props {
         style: number;
-        colors: InstanceType<typeof Note>['colors'];
+        colors: InstanceType<typeof NotePreview>['colors'];
     }
     const props: Props = $props();
 </script>

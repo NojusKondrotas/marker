@@ -3,7 +3,7 @@ import type NoteColorId from "./NoteColorId";
 import type NoteHighlight from "./NoteHighlight";
 import type NoteTitle from "./NoteTitle";
 
-export default class Note {
+export default class NotePreview {
     id: UUID;
     colors: NoteColorId[];
     titles: NoteTitle[];
