@@ -30,6 +30,8 @@ export function addColor(id: number): boolean {
     const note = allNotes[noteIdx];
 
     const colors = [...note.colors];
+    if (colors.length === 18)
+        return false;
     colors.push(new NoteColorId(crypto.randomUUID(), new ColorHex('f25004')));
 
     const newNote = { ...note, colors };
