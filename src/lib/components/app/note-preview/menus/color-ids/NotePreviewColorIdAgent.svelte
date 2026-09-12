@@ -107,7 +107,7 @@
     </div>
     <Item class="p-0">
         <ItemContent>
-            <ItemDescription class="text-[0.65rem]">
+            <ItemDescription class="text-[0.65rem] cursor-default">
                 {colorHex}
             </ItemDescription>
         </ItemContent>

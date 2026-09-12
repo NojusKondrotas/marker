@@ -129,7 +129,7 @@
         </div>
     </div>
     <div class="flex gap-x-0.5">
-        <p class="h-fit text-sm">#</p>
+        <p class="h-fit text-sm cursor-default">#</p>
         <Input class="p-0 h-fit" oninput={inputHex} value={hex} />
     </div>
 </div>

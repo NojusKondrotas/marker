@@ -61,10 +61,10 @@
     {:else if props.style == 4}
         {#each props.colors as color (color.id)}
         <div class="flex flex-col justify-between h-full">
-            <Button style="background-color: {color.hex.toString()};" class="w-4 h-4 cursor-pointer" size="icon" variant="outline"></Button>
+            <Button style="background-color: {color.hex.toString()};" class="w-4 h-4 active:not-aria-[haspopup]:translate-y-0" size="icon" variant="outline"></Button>
             <Item class="p-0">
                 <ItemContent>
-                    <ItemDescription class="text-[0.65rem]">
+                    <ItemDescription class="text-[0.65rem] cursor-default">
                         {color.hex.toString()}
                     </ItemDescription>
                 </ItemContent>
