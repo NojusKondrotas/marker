@@ -9,8 +9,6 @@
 	import { ItemDescription } from "@/components/ui/item";
 	import { addColor } from "@/shared/note_preview_updater.svelte";
 	import type Note from "@/models/Note";
-	import NoteColorId from "@/models/NoteColorId";
-	import ColorHex from "@/models/ColorHex";
 
     interface Props {
         id: string;
@@ -43,7 +41,9 @@
     });
 
     async function handleColorAdd(e: MouseEvent) {
-        addColor(e, props.noteId);
+        e.preventDefault();
+        e.stopPropagation();
+        addColor(props.noteId);
         await tick();
         colorIdMenu.scrollTo({ left: addButton.offsetLeft, behavior: 'smooth' });
     }

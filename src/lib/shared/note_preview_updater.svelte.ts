@@ -3,10 +3,7 @@ import NoteColorId from "@/models/NoteColorId";
 import NotesStore from "@/stores/NotesStore";
 import { get } from "svelte/store";
 
-export function removeColor(e: MouseEvent, id: number, colorIdx: number): boolean {
-    e.preventDefault();
-    e.stopPropagation();
-
+export function removeColor(id: number, colorIdx: number): boolean {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)
@@ -25,10 +22,7 @@ export function removeColor(e: MouseEvent, id: number, colorIdx: number): boolea
     return true;
 }
 
-export function addColor(e: MouseEvent, id: number): boolean {
-    e.preventDefault();
-    e.stopPropagation();
-
+export function addColor(id: number): boolean {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)
@@ -65,10 +59,7 @@ export function updateColor(id: number, colorIdx: number, colorHex: string): boo
     return true;
 }
 
-export function moveColorLeft(e: MouseEvent, id: number, colorIdx: number): boolean {
-    e.preventDefault();
-    e.stopPropagation();
-
+export function moveColorLeft(id: number, colorIdx: number): boolean {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)
@@ -91,10 +82,7 @@ export function moveColorLeft(e: MouseEvent, id: number, colorIdx: number): bool
     return true;
 }
 
-export function moveColorRight(e: MouseEvent, id: number, colorIdx: number) {
-    e.preventDefault();
-    e.stopPropagation();
-
+export function moveColorRight(id: number, colorIdx: number) {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)

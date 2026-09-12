@@ -34,19 +34,28 @@
     }
 
     async function handleColorLeft(e: MouseEvent) {
-        moveColorLeft(e, props.noteId, props.idx);
+        e.preventDefault();
+        e.stopPropagation();
+
+        moveColorLeft(props.noteId, props.idx);
         await tick();
         props.onMove(props.idx);
     }
 
     async function handleColorRight(e: MouseEvent) {
-        moveColorRight(e, props.noteId, props.idx);
+        e.preventDefault();
+        e.stopPropagation();
+
+        moveColorRight(props.noteId, props.idx);
         await tick();
         props.onMove(props.idx);
     }
 
     async function handleColorRemove(e: MouseEvent) {
-        removeColor(e, props.noteId, props.idx);
+        e.preventDefault();
+        e.stopPropagation();
+
+        removeColor(props.noteId, props.idx);
         props.onRemove(props.idx);
     }
 
