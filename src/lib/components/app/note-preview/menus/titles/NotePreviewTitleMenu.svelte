@@ -12,12 +12,13 @@
 
     let currentTitleAgent = 0;
 
-    let titleMenu: HTMLElement;
+    let titleMenu: HTMLElement, verticalScrollZone: HTMLElement;
+    let itemEls: HTMLElement[] = [];
 
     onMount(() => {
         const titleAgents: HTMLElement[] = Array.from(titleMenu.querySelectorAll(':scope > *'));
 
-        titleMenu.addEventListener('wheel', (e: WheelEvent) => {
+        verticalScrollZone.addEventListener('wheel', (e: WheelEvent) => {
             e.preventDefault();
             e.stopPropagation();
 
@@ -33,16 +34,29 @@
                 }
             }
 
-            titleMenu.scrollTo({ left: titleAgents[currentTitleAgent].offsetLeft, behavior: 'smooth' });
+            titleMenu.scrollTo({ top: titleAgents[currentTitleAgent].offsetTop, behavior: 'smooth' });
+        });
+
+        itemEls.forEach((el) => {
+            el.addEventListener('wheel', (e: WheelEvent) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                el.scrollBy({ left: e.deltaY, behavior: 'smooth' });
+            });
         });
     });
 </script>
 
 
-<menu id={props.id} bind:this={titleMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 gap-x-3.5 w-50 bg-white overflow-x-hidden border shadow-sm">
-    {#each props.titles as title (title.offset)}
-        <li class="p-1.5">
-            <NotePreviewTitleAgent {...title}></NotePreviewTitleAgent>
-        </li>
-    {/each}
+<menu id={props.id} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible w-fit max-w-50 h-fit max-h-50 flex flex-row ms-1.5 bg-white overflow-hidden border shadow-sm">
+    <div class="w-5 shrink-0 border-r" bind:this={verticalScrollZone}>
+    </div>
+    <div class="relative flex flex-col gap-x-3.5 overflow-hidden" bind:this={titleMenu}>
+        {#each props.titles as title, i (title.offset)}
+            <li class="overflow-x-hidden shrink-0 text-nowrap" bind:this={itemEls[i]}>
+                <NotePreviewTitleAgent {...title} class="p-1.5 w-fit"></NotePreviewTitleAgent>
+            </li>
+        {/each}
+    </div>
 </menu>

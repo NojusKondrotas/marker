@@ -16,7 +16,7 @@ export async function load() {
     notes.push(new NotePreview(
         'f992aaf1-9e09-4aa1-8c36-c053d7b7d8d0',
         [new NoteColorId(new ColorHex("403D88")), new NoteColorId(new ColorHex("ff00ff"))],
-        [new NoteTitle(0, "Oscar"), new NoteTitle(1024, "Romeo"), new NoteTitle(2048, "Mike")],
+        [new NoteTitle(0, "Oscar"), new NoteTitle(1024, "Romeo"), new NoteTitle(2048, "Mike"), new NoteTitle(16250, "MikeJullietMikeJullietMikeJulliet"), new NoteTitle(17777, "MikeJullietMikeJullietMikeJullietMikeJullietMikeJulliet")],
         [new NoteHighlight(9, "PapaSierraYankee"), new NoteHighlight(18, "CharlieHotelOscar"), new NoteHighlight(630, "LimaOscar"), new NoteHighlight(752, "GolfIndia"), new NoteHighlight(800, "CharlieAlphaLima"), new NoteHighlight(1145, "DeltaIndia"), new NoteHighlight(1307, "SierraOscarRomeo"), new NoteHighlight(2041, "DeltaEchoRomeo")],
         "India Lima Uniform Victor Yankee Oscar Uniform India Lima Uniform Victor Yankee Oscar Uniform India Lima Uniform Victor Yankee Oscar Uniform"));
     notes.push(new NotePreview(
