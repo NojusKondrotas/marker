@@ -73,13 +73,13 @@
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
-<menu onclick={handleStrayClick} id={props.id} bind:this={colorIdMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
+<menu onclick={handleStrayClick} id={props.id} bind:this={colorIdMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 gap-x-3.5 w-50 bg-white overflow-x-hidden border shadow-sm">
     {#each props.colors as color, idx (color.id)}
-        <li>
+        <li class="p-1.5">
             <NotePreviewColorIdAgent {...color} {idx} noteId={props.noteId} {onMove} {onRemove}></NotePreviewColorIdAgent>
         </li>
     {/each}
-    <li bind:this={addButton}>
+    <li bind:this={addButton} class="p-1.5">
         <div class="flex flex-col justify-between h-full">
             <div class="flex flex-col gap-y-1">
                 <span class="flex h-4 gap-x-1">
