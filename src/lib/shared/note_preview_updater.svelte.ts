@@ -1,10 +1,9 @@
 import ColorHex from "@/models/ColorHex";
 import NoteColorId from "@/models/NoteColorId";
 import NotesStore from "@/stores/NotesStore";
-import type { UUID } from "crypto";
 import { get } from "svelte/store";
 
-export function removeColor(id: UUID, colorIdx: number): boolean {
+export function removeColor(id: string, colorIdx: number): boolean {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)
@@ -23,7 +22,7 @@ export function removeColor(id: UUID, colorIdx: number): boolean {
     return true;
 }
 
-export function addColor(id: UUID): boolean {
+export function addColor(id: string): boolean {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)
@@ -42,7 +41,7 @@ export function addColor(id: UUID): boolean {
     return true;
 }
 
-export function updateColor(id: UUID, colorIdx: number, colorHex: string): boolean {
+export function updateColor(id: string, colorIdx: number, colorHex: string): boolean {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)
@@ -62,7 +61,7 @@ export function updateColor(id: UUID, colorIdx: number, colorHex: string): boole
     return true;
 }
 
-export function moveColorLeft(id: UUID, colorIdx: number): boolean {
+export function moveColorLeft(id: string, colorIdx: number): boolean {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)
@@ -85,7 +84,7 @@ export function moveColorLeft(id: UUID, colorIdx: number): boolean {
     return true;
 }
 
-export function moveColorRight(id: UUID, colorIdx: number) {
+export function moveColorRight(id: string, colorIdx: number) {
     const allNotes = get(NotesStore);
     const noteIdx = allNotes.findIndex((note) => note.id === id);
     if (noteIdx === -1)

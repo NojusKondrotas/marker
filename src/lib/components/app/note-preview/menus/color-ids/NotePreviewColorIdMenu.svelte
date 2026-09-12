@@ -9,11 +9,10 @@
 	import { ItemDescription } from "@/components/ui/item";
 	import { addColor } from "@/shared/note_preview_updater.svelte";
 	import type NotePreview from "@/models/NotePreview";
-	import type { UUID } from "crypto";
 
     interface Props {
         id: string;
-        noteId: UUID;
+        noteId: string;
         colors: InstanceType<typeof NotePreview>['colors'];
     }
     const props: Props = $props();
