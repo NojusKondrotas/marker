@@ -39,9 +39,9 @@
 </script>
 
 
-<menu id={props.id} bind:this={titleMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 p-1.5 gap-x-5 w-50 bg-white overflow-x-hidden border shadow-sm">
+<menu id={props.id} bind:this={titleMenu} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible h-fit flex flex-row ms-1.5 gap-x-3.5 w-50 bg-white overflow-x-hidden border shadow-sm">
     {#each props.titles as title (title.offset)}
-        <li>
+        <li class="p-1.5">
             <NotePreviewTitleAgent {...title}></NotePreviewTitleAgent>
         </li>
     {/each}
