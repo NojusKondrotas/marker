@@ -8,5 +8,5 @@
 
 <div class="flex flex-col {props.class}">
     <NotePreviewTitleAgentOffset offset={props.offset}></NotePreviewTitleAgentOffset>
-    <p bind:this={contentElement} class="text-lg overflow-x-hidden text-nowrap w-full min-w-0">{props.contents}</p>
+    <p bind:this={contentElement} class="text-lg cursor-default overflow-x-hidden text-nowrap w-full min-w-0">{props.contents}</p>
 </div>

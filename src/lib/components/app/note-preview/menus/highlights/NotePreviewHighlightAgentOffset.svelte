@@ -8,7 +8,7 @@
     const props: Props = $props();
 </script>
 
-<span class="flex items-center gap-x-0.5">
+<span class="flex items-center gap-x-0.5 cursor-default">
     <Badge class="min-w-[5ch] h-fit text-[0.6rem] justify-start px-1 bg-gray-100" variant="outline">{props.offset}</Badge>
     <Button class="w-2 h-0.5 box-content p-1.5 cursor-pointer transition-none" variant="link" size="icon-xs"><CornerRightUp strokeWidth={1.5} /></Button>
 </span>

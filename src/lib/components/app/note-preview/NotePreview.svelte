@@ -73,7 +73,7 @@
             <NotePreviewColorIdBar colors={props.colors} style={props.style} />
         </CardHeader>
         <CardContent>
-            <p class="text-2xl line-clamp-3 text-ellipsis">{props.content}</p>
+            <p class="text-2xl cursor-default line-clamp-3 text-ellipsis">{props.content}</p>
         </CardContent>
     </Card>
     <aside class="ml-1.5 w-max flex flex-col gap-y-2">
