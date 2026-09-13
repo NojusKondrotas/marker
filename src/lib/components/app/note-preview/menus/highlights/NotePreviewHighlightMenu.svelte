@@ -58,16 +58,30 @@
     });
 </script>
 
-
-<menu id={props.id} class="absolute invisible flex flex-col w-auto gap-y-2 ms-1.5" class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)}>
-    <div id="{props.id}-extended" bind:this={extendedMenu} class="relative w-fit max-w-50 h-fit flex flex-row gap-x-3.5 bg-white overflow-x-hidden border shadow-sm">
+<!-- svelte-ignore a11y_click_events_have_key_events,a11y_no_static_element_interactions -->
+<menu
+    id={props.id}
+    class="absolute invisible flex flex-col w-auto gap-y-2 ms-1.5"
+    class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)}
+>
+    <div
+        id="{props.id}-extended"
+        bind:this={extendedMenu}
+        class="relative w-fit max-w-50 h-fit flex flex-row gap-x-3.5 bg-white overflow-x-hidden border shadow-sm"
+        onclick={(e) => e.stopPropagation()}
+    >
         {#each props.highlights as highlight (highlight.offset)}
             <li class="p-1.5">
                 <NotePreviewHighlightAgent {...highlight}></NotePreviewHighlightAgent>
             </li>
         {/each}
     </div>
-    <div id="{props.id}-minified" bind:this={minifiedMenu} class="relative w-fit h-fit max-h-50 flex flex-col bg-white overflow-y-hidden border shadow-sm">
+    <div
+        id="{props.id}-minified"
+        bind:this={minifiedMenu}
+        class="relative w-fit h-fit max-h-50 flex flex-col bg-white overflow-y-hidden border shadow-sm"
+        onclick={(e) => e.stopPropagation()}
+    >
         {#each props.highlights as highlight (highlight.offset)}
             <li class="p-1.5">
                 <NotePreviewHighlightAgentOffset offset={highlight.offset}></NotePreviewHighlightAgentOffset>

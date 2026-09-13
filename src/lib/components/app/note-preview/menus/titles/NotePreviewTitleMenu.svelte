@@ -48,8 +48,13 @@
     });
 </script>
 
-
-<menu id={props.id} class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)} class="absolute invisible w-fit max-w-50 h-fit max-h-50 flex flex-row ms-1.5 bg-white overflow-hidden border shadow-sm">
+<!-- svelte-ignore a11y_click_events_have_key_events,a11y_no_noninteractive_element_interactions -->
+<menu
+    id={props.id}
+    class:invisible={!isMenuRegistered(MenuLayers.NoteMenu, props.id)}
+    class="absolute invisible w-fit max-w-50 h-fit max-h-50 flex flex-row ms-1.5 bg-white overflow-hidden border shadow-sm"
+    onclick={(e) => e.stopPropagation()}
+>
     <div class="w-5 shrink-0 border-r" bind:this={verticalScrollZone}>
     </div>
     <div class="relative flex flex-col gap-x-3.5 overflow-hidden" bind:this={titleMenu}>
