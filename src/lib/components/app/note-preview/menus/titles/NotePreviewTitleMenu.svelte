@@ -37,12 +37,20 @@
             titleMenu.scrollTo({ top: titleAgents[currentTitleAgent].offsetTop, behavior: 'smooth' });
         });
 
+        let prevTime: number = new Date().getTime();
         titleZones.forEach((el, i) => {
             el.addEventListener('wheel', (e: WheelEvent) => {
                 e.preventDefault();
                 e.stopPropagation();
 
-                titleContents[i].scrollBy({ left: e.deltaY, behavior: 'smooth' });
+                const currentTime = new Date().getTime();
+                const diff = currentTime - prevTime
+                if (diff < 10)
+                    titleContents[i].scrollBy({ left: e.deltaY, behavior: 'auto' });
+                else
+                    titleContents[i].scrollBy({ left: e.deltaY, behavior: 'smooth' });
+                
+                prevTime = currentTime;
             });
         });
     });
