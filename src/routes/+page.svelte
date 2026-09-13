@@ -11,13 +11,24 @@
         else
             unregisterAllMenus();
     }
+
+    function handleNotesScroll(e: WheelEvent) {
+        const container = e.currentTarget as HTMLElement;
+
+        container.scrollBy({ left: e.deltaY, behavior: 'auto' });
+    }
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-<div onclick={handleStrayClick} class="p-0 m-0 w-screen h-screen">
-    <main class="h-screen pl-[10vw] py-[10vh] overflow-hidden gap-x-40 gap-y-20 flex flex-col flex-wrap content-start">
+<svelte:window onclick={handleStrayClick}/>
+
+<div class="flex flex-col p-0 m-0 w-screen h-screen">
+    <main
+        onwheel={handleNotesScroll}
+        class="px-[10vw] py-[10vh] overflow-hidden gap-x-40 gap-y-20 flex flex-row items-center grow"
+    >
         {#each $NotesStore as note (note.id)}
             <NotePreview {...note} style={4} />
         {/each}
     </main>
+    <div class="h-2/10"></div>
 </div>
