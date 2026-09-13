@@ -13,7 +13,7 @@
     let currentTitleAgent = 0;
 
     let titleMenu: HTMLElement, verticalScrollZone: HTMLElement;
-    let itemEls: HTMLElement[] = [];
+    let titleZones: HTMLElement[] = [], titleContents: HTMLElement[] = [];
 
     onMount(() => {
         const titleAgents: HTMLElement[] = Array.from(titleMenu.querySelectorAll(':scope > *'));
@@ -37,12 +37,12 @@
             titleMenu.scrollTo({ top: titleAgents[currentTitleAgent].offsetTop, behavior: 'smooth' });
         });
 
-        itemEls.forEach((el) => {
+        titleZones.forEach((el, i) => {
             el.addEventListener('wheel', (e: WheelEvent) => {
                 e.preventDefault();
                 e.stopPropagation();
 
-                el.scrollBy({ left: e.deltaY, behavior: 'smooth' });
+                titleContents[i].scrollBy({ left: e.deltaY, behavior: 'smooth' });
             });
         });
     });
@@ -54,8 +54,8 @@
     </div>
     <div class="relative flex flex-col gap-x-3.5 overflow-hidden" bind:this={titleMenu}>
         {#each props.titles as title, i (title.offset)}
-            <li class="overflow-x-hidden shrink-0 text-nowrap" bind:this={itemEls[i]}>
-                <NotePreviewTitleAgent {...title} class="p-1.5 w-fit"></NotePreviewTitleAgent>
+            <li class="overflow-x-hidden shrink-0 text-nowrap" bind:this={titleZones[i]}>
+                <NotePreviewTitleAgent {...title} class="p-1.5" bind:contentElement={titleContents[i]}></NotePreviewTitleAgent>
             </li>
         {/each}
     </div>

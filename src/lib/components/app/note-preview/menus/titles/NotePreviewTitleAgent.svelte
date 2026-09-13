@@ -1,17 +1,12 @@
 <script lang="ts">
-	import Badge from "@/components/ui/badge/badge.svelte";
-    import Button from "@/components/ui/button/button.svelte";
 	import type NoteTitle from "@/models/NoteTitle";
-    import CornerRightUp from '@lucide/svelte/icons/corner-right-up';
+	import NotePreviewTitleAgentOffset from "./NotePreviewTitleAgentOffset.svelte";
 
-    type Props = InstanceType<typeof NoteTitle> & { class: string };
-    const props: Props = $props();
+    type Props = InstanceType<typeof NoteTitle> & { class: string, contentElement?: HTMLElement };
+    let { contentElement = $bindable(), ...props }: Props = $props();
 </script>
 
 <div class="flex flex-col {props.class}">
-    <span class="flex items-center gap-x-0.5">
-        <Badge class="min-w-[5ch] h-fit text-[0.6rem] justify-start px-1 bg-gray-100" variant="outline">{props.offset}</Badge>
-        <Button class="w-2 h-0.5 box-content p-1.5 cursor-pointer transition-none" variant="link" size="icon-xs"><CornerRightUp strokeWidth={1.5} /></Button>
-    </span>
-    <p class="text-lg">{props.contents}</p>
+    <NotePreviewTitleAgentOffset offset={props.offset}></NotePreviewTitleAgentOffset>
+    <p bind:this={contentElement} class="text-lg overflow-x-hidden text-nowrap w-full min-w-0">{props.contents}</p>
 </div>
